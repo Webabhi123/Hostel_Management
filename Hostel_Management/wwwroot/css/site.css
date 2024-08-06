@@ -133,28 +133,34 @@ body {
     background-color: #343a40;
     margin-bottom: -60px;
     border-radius: 5px;
+    padding:3%;
 }
 .footer-class .information a {
-        color: white; /* Change this to your desired color */
-        text-decoration: none; /* Remove underline */
-        transition: color 0.3s ease; /* Smooth color transition */
-        font-size: 20px;
-        letter-spacing: 2.5px;
-        line-height: 0.5px;
+    color: white; /* Change this to your desired color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth color transition */
+    font-size: 20px;
+    letter-spacing: 2.5px;
+    line-height: 0.5px;
 }
 .footer-class .information a:hover {
-        color: Highlight; /* Change this to your desired color */
-       
+     color: Highlight; /* Change this to your desired color */   
 }
-.footer-class ul{
-    list-style-type:none;
-    text-align:center;
-}
+.footer-class ul {
+     list-style-type: none;
+     text-align: center;
+     line-height: 206%;
+    }
 .footer-class .footer-header .footer-h5{
-    text-align:center;
-    color:aqua;
+     text-align:center;
+     color:antiquewhite;
 }
-
+hr{
+    color:white;
+    background-color:white;
+    font-weight:bold;
+    height:2px;
+}
 /*Hotel.cshtml*/
 .card {
     box-shadow: 0 0 76px rgba(0, 0, 0, .15);
@@ -246,4 +252,70 @@ body {
 }
 form.convFormDynamic textarea.userInputDynamic{
     /*margin-top:-6px;*/
+}
+
+/*Meeting.cshtml*/
+.meeting-form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 1%;
+}
+.schedule-meeting-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    padding: 13px;
+    width: 50%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/*Event.cshtml*/
+.text-position-event{
+    text-align:center;
+    margin-top:15%;
+}
+.container .row .event-list {
+    list-style-type: disclosure-closed;
+    letter-spacing: 2.5px;
+    line-height: 28.5px;
+}
+.container .row .Event-Header{
+    letter-spacing:2.5px;
+    margin-top:2%;
+}
+.container .row .event-que-img img{
+    width:80%;
+}
+.event-section .container .event-section-title {
+    text-align: center;
+    padding-bottom: 2%;
+    letter-spacing: revert;
+}
+.event-section .container .event-cal-img img {
+    width: 80%;
+}
+
+.event-section .container .segment-step dt{
+    font-size:25px;
+}
+/*About-us*/
+.about-us .about-image{
+    margin-top: 8%;
+}
+
+.about-us .about-text{
+    margin-top:10%;
+}
+
+.about-us .about-image img {
+    width: 100%;
 }

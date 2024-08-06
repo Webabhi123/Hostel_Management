@@ -1,4 +1,4 @@
-﻿
+﻿@model Hostel_Management.Models.Meeting
 @{
     ViewData["Title"] = "Meeting";
     Layout = "~/Views/Shared/_LayoutMeeting.cshtml";
@@ -7,8 +7,64 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
+            <div class="schedule-meeting-btn">
+                <h3>Schedule a Meeting</h3>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <form id="meetingForm" class="row g-3 meeting-form" asp-controller="Home" asp-action="Meeting" method="post">
+                <div class="col-md-6">
+                    <label for="name">Name </label>
+                    <input type="text" id="name" name="Name" class="form-control" required>
+                </div>
+                <div class="col-md-8">
+                    <label for="email">Email </label>
+                    <input type="email" id="email" name="Email" class="form-control" required>
+                   
+                </div>
+                <div class="col-8">
+                    <label for="address">Address </label>
+                    <input type="text" id="address" name="Address" class="form-control" required>
 
+                </div>
+                <div class="col-8">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="PhoneNumber" class="form-control" required>
+                    
+                </div>
+                <div class="col-md-6">
+                    <label for="city">City </label>
+                    <input type="text" id="city" name="City" class="form-control" required>
+                   
+                </div>
+                <div class="col-md-4">
+                    <label for="state" >State </label>
+                    <select class="form-select form-control" name="State" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>India</option>
+                        <option>Delhi</option>
+                    </select>
+                    @* <input type="text" id="state" name="State" required /> *@
+                </div>
+                <div class="col-md-2">
+                    <label for="postalCode">Postal Code</label>
+                    <input type="text" id="postalCode" name="PostalCode" class="form-control" required>
+                </div>
+                <div class="col-6">
+                    <div class="form-date">
+                        <label class="form-check-label">Select a Date</label>
+                        <input type="Date" class="form-control" name="Date" required>
+                        
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    @* <input type="submit" value="Create" class="btn btn-default" /> *@
+                    @* <button type="submit" class="btn btn-primary">Submit</button> *@
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
 
