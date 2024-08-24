@@ -11,37 +11,90 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @* <a href="~/lib/jquery/dist/jquery.min.map">~/lib/jquery/dist/jquery.min.map</a> *@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/site.js"></script>
+    <link rel="stylesheet" href="~/css/jquery.convform.css" />
+    <script src="~/js/jquery.convform.js"></script>
+    <style>
+        
+    </style>
 </head>
 <body>
+    <div class="chat_icon">
+        <i class="bi bi-chat-dots"></i>
+        @* <i class="bi bi-instagram"></i> *@
+    </div>
+    <div class="chat-box">
+        <div id="chat" class="conv-form-wrapper">
+            <form action="" method="GET" class="hidden">
+                <select name="category" data-conv-question="Hello,How can I help you?">
+                    <option value="WebDevelopement">Website Development</option>
+                    <option value="DigitalMarketing">DigitalMarketing</option>
+                </select>
+                <div data-conv-fork="category">
+                    <div data-conv-case="WebDevelopement">
+                        <input type="text" name="domain_name" data-conv-question="Please, tell me your domain name">
+                    </div>
+                    <div data-conv-case="DigitalMarketing">
+                        <input type="text" name="company_name" data-conv-question="Please Please, tell me your company name">
+                    </div>
+                    @* <div data-conv-case="no">
+                    <select name="thought" data-conv-question="Have you ever thought about learning? Programming is fun!">
+                    <option value="yes">Yes</option>
+                    <option value="no">No..</option>
+                    </select>
+                    </div> *@
+                </div>
+                <input type="text" name="name" data-conv-question="Please Please, tell me your name" />
+                <input data-conv-question="Type in your e-mail" data-pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" id="email" type="email" name="email" required placeholder="What's your e-mail?">
+                <select name="category" data-conv-question="Confirm">
+                    <option value="confirm">Confirm</option>
+                </select>
+            </form>
+        </div>
+    </div>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-xl bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">
+                    <img src="~/images/hostel_hub.png" alt="hostel_hub"/>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    @* <i class="fas fa-bars"></i> *@
+                    <i class="bi bi-list"></i>
+                    @* <span class="navbar-toggler-icon"></span> *@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="/Hotel/">Hotel</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                Solution
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="/Club-Management/">Clubs</a></li>
+                                <li><a class="dropdown-item" href="/Event-Management/">Event</a></li>
+                                @* <li><a class="dropdown-item" href=""></a></li> *@
+                                @* <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li> *@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                            <a class="nav-link" href="/About-us/">About-Us</a>
                         </li>
+                        <li>
+                            <a class="nav-link" href="/pricing/">Pricing</a>
+                        </li>
+                        @* <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li> *@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

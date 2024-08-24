@@ -10,6 +10,7 @@ namespace Hostel_Management.Context
         {
         }
         public DbSet<Meeting> meetings { get; set; }
+        public DbSet<User> users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

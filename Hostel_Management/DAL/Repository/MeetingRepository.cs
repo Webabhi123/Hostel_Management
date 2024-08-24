@@ -6,18 +6,18 @@ namespace Hostel_Management.DAL.Repository
 {
     public class MeetingRepository : IMeetingRepository
     {
-        private ManagementDbcontext context;
-        public MeetingRepository(ManagementDbcontext _context)
+        private ManagementDbcontext _context;
+        public MeetingRepository(ManagementDbcontext context)
         {
-            context = _context;
+            _context = context;
         }
 
         public async Task<Meeting> Add(Meeting meeting)
         {
             // Implementation of the method
             // For example:
-            await context.AddAsync(meeting);
-            // await _context.SaveChangesAsync();
+            await _context.AddAsync(meeting);
+            await _context.SaveChangesAsync();
             return meeting;
         }
     }

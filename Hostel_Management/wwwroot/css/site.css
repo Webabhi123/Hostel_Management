@@ -20,6 +20,40 @@ html {
 body {
   margin-bottom: 60px;
 }
+.container-fluid img {
+    width: 20%;
+}
+.container-fluid i {
+    font-size: 55px;
+    font-weight: bold;
+}
+.navbar-nav {
+    gap: 10px;
+    font-size: 18px;
+}
+/*@media (min-width: 1200px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+}*/
+/*@media (min-width: 992px) {
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-collapse {
+        display: none !important;
+    }
+
+        .navbar-collapse.show {
+            display: block !important;
+        }
+}*/
+.nav-link{
+    color:black;
+    font-weight:bold;
+}
 .text-position{
     margin-top:23%;
     text-align:center;
@@ -53,8 +87,12 @@ body {
 .text-section {
     text-align: center;
     margin-top: 40px;
-    background: linear-gradient(11deg, blue, transparent);
-    font-size:18px;
+    /*background: linear-gradient(11deg, blue, transparent);*/
+    font-size: 18px;
+    background-color: aliceblue;
+    background: rgba(5, 6, 5,);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    border-radius: 50px;
 }
 .title-center {
     text-align: center;
@@ -160,6 +198,13 @@ hr{
     background-color:white;
     font-weight:bold;
     height:2px;
+}
+
+.btn-primary {
+    border-radius: 30px;
+    font-size: 21px;
+    background-color: sandybrown;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
 }
 /*Hotel.cshtml*/
 .card {
@@ -319,3 +364,334 @@ form.convFormDynamic textarea.userInputDynamic{
 .about-us .about-image img {
     width: 100%;
 }
+/*club*/
+.club-text-position{
+    margin-top:15%;
+}
+.club-img-holder {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+.segment .club-img-holder img{
+    width:105%;
+}
+.segment .section-card img{
+    width:88%;
+}
+.segment .section .section-card {
+    padding: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 16px;
+    text-align: initial;
+}
+/* Add this CSS in your stylesheet */
+@keyframes flowAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-card.animate {
+    animation: flowAnimation 0.5s ease-out forwards;
+}
+.club_article figure img{
+    width:82%;
+}
+.club_article h3{
+    letter-spacing: .75px;
+    margin-left: 5%;
+}
+.club_article ul li {
+    list-style-type: none;
+    padding-bottom: 20px;
+    position: relative;
+    padding-left: 35px;
+    background: url(../images/club_article_icon.png) no-repeat left top;
+    color: #2d2d2d;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 2px;
+}
+.club_articles .section-card {
+    padding: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 16px;
+    text-align: initial;
+    margin:2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    border-radius: 103px;
+}
+.letter-spacing {
+    letter-spacing: 6px;
+}
+.club_articles .section-card img{
+    width:50%;
+}
+
+/*Pricing Page*/
+.pricing-plans-section {
+    background: #eef1f7;
+    margin-bottom: -14px;
+}
+.pricing-title-section {
+    text-align: center;
+    line-height: normal;
+    padding-bottom: 40px;
+    letter-spacing: 10px;
+    font-size: 42px;
+}
+.pricing_filter{
+    margin-bottom:20px;
+    font-size:18px;
+}
+.subscription_length {
+    margin-bottom: 20px;
+    display: flex;
+}
+.row.gutters-small > [class*=col] {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.subscription_list {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    max-width: 280px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor:pointer;
+}
+.subscription_list {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    max-width: 280px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #2e2e2e;
+    background: aliceblue;
+}
+.subscription_list.active {
+     background: #58a4fd;
+     color: #fff;
+}
+.subscription_list:first-child{
+    border-radius:12px 0 0 12px;
+}
+.subscription_list:last-child{
+    border-radius:0 12px 12px 0;
+}
+.currency-selector {
+    position: relative;
+    margin-bottom: 20px;
+}
+.currency_selector_select {
+    appearance: none;
+    margin: 0;
+    padding: 10px 40px 10px 20px;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+    border: none;
+    outline: 0;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    font-family: Ubuntu, MuseoSansCyrl, Arial, sans-serif;
+}
+.pricing_size {
+    margin-bottom: 20px;
+    height: calc(100% - 20px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    list-style-type:none;
+}
+.pricing_size_item {
+    margin-bottom: 8px;
+    padding: 8px 40px 8px 20px;
+    position: relative;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 12px;
+    border: 2px solid aliceblue;
+    cursor: pointer;
+    background-color: aliceblue;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.pricing_size_item:hover,
+.pricing_size_item.active {
+    border-color: #007bff; /* Change this to your desired border color */
+    transform: translateY(-3px); /* Floating effect */
+    background-color: #e9ecef;
+}
+
+.pricing_size_name {
+    padding-bottom: 5px;
+    font-size: 24px;
+    font-weight: 500;
+}
+.pricing_size_amount {
+    font-size: 16px;
+}
+.pricing_feature {
+    margin-bottom: 20px;
+    height: calc(100% - 20px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.pricing_feature_list {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 15px 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #fff;
+    font-size: 16px;
+}
+.pricing_feature_list:nth-child(odd) {
+    background: #f2f8ff;
+}
+.pricing_feature_list:first-child {
+    border-radius: 12px 12px 0 0;
+}
+.pricing_plan {
+    margin-bottom: 20px;
+    height: calc(100% - 20px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+.pricing_header {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ededed;
+}
+.pricing_plan_name {
+    padding-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+.pricing_plan_size {
+    font-size: 18px;
+}
+.pricing_body_price {
+    /*padding-bottom: 148px;*/
+    font-size: 46px;
+    font-weight: 700;
+}
+.pricing_body_sign {
+    padding: 5px 0;
+    font-size: 36px;
+    font-weight: 500;
+}
+.pricing_body_text {
+    padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: 400;
+}
+.pricing_body {
+    padding: 15px 0;
+}
+.pricing_footer{
+
+}
+.pricing_footer_btn {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px 30px;
+    /*min-width: 320px;*/
+    display: inline-block;
+    font-family: Ubuntu, MuseoSansCyrl, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: .18px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-appearance: none;
+    color: #fff;
+    background-color: darkcyan;
+    border-radius: 3px;
+    /*-webkit-transition: all .5s;*/
+    -o-transition: all .5s;
+    transition: all .5s;
+    cursor:pointer;
+}
+.pricing_footer_text{
+    text-align:center;
+}
+
+/*Login Page*/

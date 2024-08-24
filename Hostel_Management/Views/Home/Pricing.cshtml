@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewData["Title"] = "Pricing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pricing-plans-section">
+    <div class="container">
+        <h2 class="pricing-title-section">Here's a About Plan </h2>
+        <div class="row gutter-small align-items-center">
+            <div class="col-12 col-lg-4 order-1 order-0">
+                <p class="pricing_filter">
+                    Get Full Access features
+                </p>
+            </div>
+            <div class="col-8 col-lg-6">
+                <ul class="subscription_length"> 
+                    <li class="subscription_list active">Monthly</li>
+                    <li class="subscription_list">Annually</li>
+                </ul>
+            </div>
+            <div class="col-4 col-lg-2">
+                <div class="currency-selector">
+                    <select class="currency_selector_select">
+                    <option value="INR" selected>INR</option>
+                    <option value="USD"> USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="BRL">BRL</option>
+                </select>
+                </div>
+            </div>
+        </div>
+        <div class="row gutters-small">
+            <div class="col-12 col-lg-3 col-xl-4">
+                <ul class="pricing_size">
+                    <li class="pricing_size_item" data-plan="Complimentary" data-price="500" data-unit="1-20 units" id="pricing_size_item_by_id">
+                        <p class="pricing_size_name">Complimentary</p>
+                        <div class="pricing_size_amount">1-20 unit</div>
+                    </li>
+                    <li class="pricing_size_item" data-plan="Extra Small" data-price="800" data-unit="5-50 units">
+                        <p class="pricing_size_name">Extra Small</p>
+                        <div class="pricing_size_amount">5-50 unit</div>
+                    </li>
+                    <li class="pricing_size_item" data-plan="Small" data-price="1600" data-unit="50-100 units">
+                        <p class="pricing_size_name">Small</p>
+                        <div class="pricing_size_amount">50-100 unit</div>
+                    </li>   
+                    <li class="pricing_size_item" data-plan="Medium" data-price="2400" data-unit="100-300 units">
+                        <p class="pricing_size_name">Medium</p>
+                        <div class="pricing_size_amount">100-300 unit</div>
+                    </li>
+                    <li class="pricing_size_item" data-plan="Large" data-price="3400" data-unit="300-600 units">
+                        <p class="pricing_size_name">Large</p>
+                        <div class="pricing_size_amount">300-600 unit</div>
+                    </li>
+                    <li class="pricing_size_item" data-plan="XL" data-price="4800" data-unit="600-1500 units">
+                        <p class="pricing_size_name">Extra Large</p>
+                        <div class="pricing_size_amount">600-1500 unit</div>
+                    </li>
+                    <li class="pricing_size_item" data-plan="XXL" data-price="6000" data-unit="1500-2500 units">
+                        <p class="pricing_size_name">Extra Extra Large</p>
+                        <div class="pricing_size_amount">1500-2500 unit</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-5 col-xl-4 order-lg-1">
+                <div class="pricing_plan">
+                    <div class="pricing_header">
+                        <p class="pricing_plan_name"></p>
+                        <p class="pricing_plan_size"></p>
+                    </div>
+                    <div class="pricing_body">
+                        <p class="pricing_body_price"></p>
+                        <p class="pricing_body_sign">+</p>
+                        <p class="pricing_body_text">Per day</p>
+                    </div>
+                    <div class="pricing_footer">
+                        @* <form id="checkoutForm" asp-action="CheckOut" asp-controller="CheckOut" method="post">
+                            <input type="hidden" name="PlanName" id="planNameInput" value="" />
+                            <input type="hidden" name="Price" id="priceInput" value="" />
+                            <input type="hidden" name="Units" id="unitsInput" value="" /> 
+                            <button type="submit" class="pricing_footer_btn">Click To Pay</button>
+                        </form> *@
+                         <a class="pricing_footer_btn" href="/CheckOut/">Click To Pay</a> 
+                        <p class="pricing_footer_text">You can only pay <b>40%</b>deposit for booking a Hostel rather than you can visit after that pay it.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 col-xl-4">
+                <ul class="pricing_feature">
+                    <li class="pricing_feature_list">
+                        <span>Guest Management</span>
+                    </li>
+                    <li class="pricing_feature_list">
+                        <span>Reservation Management</span>
+                    </li>
+                    <li class="pricing_feature_list">
+                        <span>HouseKeeping Management</span>
+                    </li>
+                    <li class="pricing_feature_list">
+                        <span>User Management</span>
+                    </li>
+                    <li class="pricing_feature_list">
+                        <span>Inventory Management</span>
+                    </li>
+                    <li class="pricing_feature_list">
+                        <span>Invoicing + Payment API</span>
+                    </li>
+                    <li class="pricing_feature_list">
+                        <span>Reporting</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+
+</script>
+
+
