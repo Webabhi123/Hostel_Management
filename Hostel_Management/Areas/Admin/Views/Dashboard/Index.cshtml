@@ -1,0 +1,57 @@
+﻿@model Hostel_Management.Areas.Admin.ViewModel.DashboardViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutSideNavbar.cshtml";
+}
+<style>
+    .container{
+        position:relative;
+        left:5rem;
+    }
+</style>
+
+@* <h1 class="text-center">Dashboard</h1> *@
+<div class="container mt-5">
+    <div class="row text-center">
+        <!-- Total Rooms -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Total Rooms</h5>
+                    <h3 class="card-text">@Model.TotalRooms</h3>
+                    <i class="bi bi-house-door-fill text-primary" style="font-size: 2rem;"></i>
+                </div>
+            </div>
+        </div>
+        <!-- Total Staff -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Total Staff</h5>
+                    <h3 class="card-text">@Model.TotalStaff</h3>
+                    <i class="bi bi-people-fill text-success" style="font-size: 2rem;"></i>
+                </div>
+            </div>
+        </div>
+        <!--Total User-->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Total User</h5>
+                    <h3 class="card-text">@Model.TotalUser</h3>
+                    <i class="bi bi-people-fill text-success" style="font-size: 2rem;"></i>
+                </div>
+            </div>
+        </div>
+        <!--Total Meetings-->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Total Meetings</h5>
+                    <h3 class="card-text">@Model.TotalMeeting</h3>
+                    <i class="bi bi-people-fill text-success" style="font-size: 2rem;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

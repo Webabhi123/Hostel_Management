@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Hostel_Management.Models.Contact>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutSideNavbar.cshtml";
+}
+
+@* <h1>Index</h1> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Message</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

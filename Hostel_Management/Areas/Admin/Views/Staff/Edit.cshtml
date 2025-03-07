@@ -1,0 +1,42 @@
+﻿@model Hostel_Management.Models.Staff;
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutSideNavbar.cshtml";
+}
+
+<h1>Edit</h1>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.Name, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.PhoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.Address, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.Address, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a href="/Admin/Staff/Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+

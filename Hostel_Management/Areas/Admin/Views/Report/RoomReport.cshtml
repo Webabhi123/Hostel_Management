@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Hostel_Management.Models.Room>
+@{
+    ViewData["Title"] = "RoomReport";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutSideNavbar.cshtml";
+}
+
+<h1>RoomReport</h1>
+<div align="right">
+    <a href="/Admin/Report/ExportRoomReport" class="btn btn-secondary">Export Report</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Capacity</th>
+            <th>Occupied</th>
+            <th>Price Per Month</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <td>@room.RoomNumber</td>
+                <td>@room.Capacity</td>
+                <td>@(room.IsOccupied ? "Yes" : "No")</td>
+                <td>@room.PricePerMonth</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

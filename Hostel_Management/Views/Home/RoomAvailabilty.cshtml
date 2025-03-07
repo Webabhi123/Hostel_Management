@@ -1,0 +1,229 @@
+﻿@model IEnumerable<Hostel_Management.Models.Room>
+@{
+    ViewData["Title"] = "RoomAvailabilty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script>
+        function toggleInfo(roomId) {
+            var infoDiv = document.getElementById("info-" + roomId);
+            if (infoDiv.style.display === "none" || infoDiv.style.display === "") {
+                infoDiv.style.display = "block";
+            } else {
+                infoDiv.style.display = "none";
+            }
+        }
+
+        // Initialize Bootstrap tooltips on the page
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+
+        function initiateCheckout(price) {
+            if (price <= 0) {
+                alert("Invalid price for checkout!");
+                return;
+            }
+
+            // Construct the request payload
+            const requestData = {
+                price: price
+            };
+
+            // Perform the AJAX request
+            $.ajax({
+                url: '/CheckOut',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(requestData),
+                success: function (response) {
+                    if (response.url) {
+                        // Redirect to Stripe's checkout page
+                        window.location.href = response.url;
+                    } else {
+                        alert("Unexpected response from server.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error:", error);
+                    console.error("Response:", xhr.responseText);
+                    alert("An error occurred while processing your request. Please try again.");
+                }
+            });
+        }
+        function showContactUsModal() {
+            $('#contactUsModal').modal('show');
+        }
+
+        // Handle form submission
+        $(document).ready(function () {
+            $("#contactUsForm").submit(function (e) {
+                e.preventDefault(); // Prevent form submission
+
+                const name = $("#contactName").val().trim();
+                const email = $("#contactEmail").val().trim();
+                const message = $("#contactMessage").val().trim();
+
+                if (name && email && message) {
+                    // Simulate form submission (send data to the server)
+                    $.ajax({
+                        url: '/Home/ContactUs/', // Replace with your server endpoint
+                        type: 'POST',
+                        // contentType: 'application/json',
+                        // data: JSON.stringify({ Name, Email, Message }),
+                        data: { Name: name, Email: email, Message: message },
+                        success: function (response) {
+                            alert("Thank you for contacting us! We'll get back to you soon.");
+                            $('#contactUsModal').modal('hide'); // Close the modal
+                            $("#contactUsForm")[0].reset(); // Reset the form
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("Error:", error);
+                            alert("An error occurred while submitting your request. Please try again.");
+                        }
+                    });
+                } else {
+                    alert("Please fill in all fields.");
+                }
+            });
+        });
+
+
+    </script>
+</head>
+
+<h1 class="text-center">RoomAvailabilty</h1>
+<div class="modal fade" id="contactUsModal" tabindex="-1" aria-labelledby="contactUsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactUsModalLabel">Contact Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="contactUsForm">
+                    <div class="mb-3">
+                        <label for="contactName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="contactName" name="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="contactEmail" name="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactMessage" class="form-label">Message</label>
+                        <textarea class="form-control" id="contactMessage" rows="3" name="Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var room in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card" style="">
+                @if (!string.IsNullOrEmpty(room.Image))
+                {
+                    <img src="@room.Image" class="card-img-top" alt="Room Image" style="" />
+                }
+                else
+                {
+                    <img src="/images/no-image-available.png" class="" alt="No Image Available" style="" />
+                }
+
+                <div class="card-body">
+                    <h5 class="card-title">Room Number: @room.RoomNumber</h5>
+                    <p class="card-text">Type: @room.RoomType</p>
+                    <p class="card-text">Price: @room.PricePerMonth</p>
+                    <button class="btn btn-info" onclick="toggleInfo(@room.RoomId)">More Info</button>
+                </div>
+                <!-- More Info Section -->
+                <div id="info-@room.RoomId" class="more-info" style="">
+                    <ul>
+                        <li>
+                            @* <i class="bi bi-wallet" data-bs-toggle="tooltip" data-bs-placement="top" title="Click To Pay" href="/CheckOut/"></i> *@
+                            <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" title="Click To Pay" onclick="initiateCheckout(@room.PricePerMonth)">
+                                <i class="bi bi-wallet"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               title="Contact Us"
+                               onclick="showContactUsModal()">
+                                <i class="bi bi-person-lines-fill"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Description on hover -->
+                @* <div class="hover-description" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; box-sizing: border-box;">
+                    <p>@room.Description</p>
+                </div> *@
+            </div>
+        </div>
+        @* </div>
+    </div> *@
+    }
+</div>
+<style>
+    .card {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card:hover .hover-description {
+        display: block;
+    }
+
+    .card:hover .card-img-top {
+        filter: blur(3px); /* Optional blur effect */
+    }
+
+    .more-info {
+        display: none;
+        padding: 10px;
+        background: #f9f9f9;
+        border-top: 1px solid #ccc;
+    }
+
+    .more-info ul {
+        list-style-type: none; /* Removes bullets */
+        padding: 0; /* Removes padding */
+        margin: 0; /* Removes margin */
+        display: flex; /* Makes the list items horizontal */
+        justify-content:center;
+        gap: 10px; /* Adds spacing between the list items */
+        font-size:24px;
+        color: #0dcaf0;
+        cursor:pointer;
+    }
+
+    .more-info ul li {
+        display: inline-block; /* Ensures each list item stays inline */
+    }
+</style>
+
+
+
+
+
+

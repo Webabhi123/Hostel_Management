@@ -1,0 +1,87 @@
+﻿@model Hostel_Management.Models.Room
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutSideNavbar.cshtml";
+}
+
+<h1>Create</h1>
+<form asp-controller="Room" asp-action="Create" method="post" enctype="multipart/form-data" class="row g-3">
+    <!-- Other form fields -->
+
+    <div class="col-md-6">
+        @Html.LabelFor(r => r.RoomNumber, new { @class = "control-label" })
+        @Html.TextBoxFor(r => r.RoomNumber, new { @class = "form-control", placeholder = "Enter room number" })
+        @Html.ValidationMessageFor(r => r.RoomNumber, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(r => r.Capacity, new { @class = "control-label" })
+        @Html.TextBoxFor(r => r.Capacity, new { @class = "form-control", placeholder = "Enter capacity" })
+        @Html.ValidationMessageFor(r => r.Capacity, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(r => r.IsOccupied, new { @class = "control-label" })
+        @Html.CheckBoxFor(r => r.IsOccupied, new { @class = "form-check-input" })
+        @Html.ValidationMessageFor(r => r.IsOccupied, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(r => r.PricePerMonth, new { @class = "control-label" })
+        @Html.TextBoxFor(r => r.PricePerMonth, new { @class = "form-control", placeholder = "Enter price per month" })
+        @Html.ValidationMessageFor(r => r.PricePerMonth, "", new { @class = "text-danger" })
+    </div>
+
+    @* <div class="col-md-8">
+        @Html.LabelFor(r => r.Description, new { @class = "control-label" })
+        @Html.TextAreaFor(r => r.Description, new { @class = "form-control", rows = 5, placeholder = "Enter room description" })
+        @Html.ValidationMessageFor(r => r.Description, "", new { @class = "text-danger" })
+    </div> *@
+
+    <div class="col-md-6">
+        @Html.LabelFor(r => r.RoomType, new { @class = "control-label" })
+        @Html.TextBoxFor(r => r.RoomType, new { @class = "form-control", placeholder = "Enter room type (e.g., Single, Double, Suite)" })
+        @Html.ValidationMessageFor(r => r.RoomType, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="col-md-10">
+        @Html.LabelFor(r => r.Image, new { @class = "control-label" })
+        <input type="file" name="imageFile" id="imageFile" class="form-control-file" onchange="previewImage()" />
+        <div id="imagePreviewContainer" style="display: none;">
+            <img id="imagePreview" src="" alt="Image preview" style="max-width: 200px; max-height: 200px;" />
+            <br/>
+            <span id="imageName"></span>
+            <input type="button" id="removeImage" class="btn btn-danger btn-sm" onclick="cancelImage()" value="Cancel" />
+        </div>
+        
+    </div>
+
+    <div class="col-md-12 mt-4">
+        <button type="submit" class="btn btn-success">Save Room</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+<script>
+    function previewImage() {
+        var file = document.getElementById('imageFile').files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('imagePreview').src = e.target.result;
+                document.getElementById('imagePreviewContainer').style.display = 'block';
+                document.getElementById('imageName').innerText = file.name;
+                document.getElementById('imageFile').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+    function cancelImage() {
+        document.getElementById('imageFile').value = "";  // Reset the file input
+        document.getElementById('imagePreviewContainer').style.display = 'none';  // Hide preview container
+        document.getElementById('imageName').innerText = '';  // Clear image name
+        document.getElementById('imageFile').style.display = 'block';
+    }
+</script>
+
+
+

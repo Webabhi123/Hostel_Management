@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">*@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHqTz1TthZ5G5u5oN1T4Hq7zjKyShqx1JpDP9jxWSTNQxk4Jz1J2L47SXH6M6Mt0vGXm5N4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/site.js"></script>
+    <style>
+        .container {
+            position: relative;
+            /* top: -488px; */
+            left: 160px;
+        }
+
+        @@media(max-width:991px) {
+            .container {
+                position: relative;
+                /* top: -339px; */
+                left: 231px;
+            }
+        }
+
+        @@media(max-width:768px) {
+            .container {
+                position: relative;
+                /* top: -339px; */
+                left: 10px;
+            }
+        }
+        @@media(max-width:768px){
+            .toggler-btn i{
+                position: relative;
+                left:-16rem!important;
+            }
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-xl bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="~/images/hostel_hub.png" alt="hostel_hub" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    @* <i class="fas fa-bars"></i> *@
+                    <i class="bi bi-list"></i>
+                    @* <span class="navbar-toggler-icon"></span> *@
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Hotel/">Hotel</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Solution
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/Club-Management/">Clubs</a></li>
+                                <li><a class="dropdown-item" href="/Event-Management/">Event</a></li>
+                                @* <li><a class="dropdown-item" href=""></a></li> *@
+                                @* <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li> *@
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/About-us/">About-Us</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/pricing/">Pricing</a>
+                        </li>
+                        @* <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li> *@
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="d-flex col-lg-6">
+        <!--sidebar-->
+        <aside id="sidebar" class="sidebar-toggle">
+            <div class="sidebar-logo">
+                <a href="#">Hostel_Hub</a>
+            </div>
+            <!--sidebar Navigation-->
+            <ul class="sidebar-nav p-0">
+                <li class="sidebar-header">
+                    Management
+                </li>
+                <li class="sidebar-item">
+                    <a href="/Admin/Dashboard/Index" class="sidebar-link">
+                        <i class="bi bi-person-lines-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/Admin/User/Index" class="sidebar-link">
+                        <i class="bi bi-person"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/Admin/Staff/Index" class="sidebar-link">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Staff</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/Admin/Staff/GetMeetingInfo" class="sidebar-link">
+                        <i class="bi bi-house-door-fill"></i>
+                        <span>Meeting-info</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/Admin/Room/Index" class="sidebar-link">
+                        <i class="bi bi-house-add-fill"></i>
+                        <span>Rooms</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/Admin/Contact/Index" class="sidebar-link">
+                        <i class="bi bi-person-lines-fill"></i>
+                        <span>Contact_list</span>
+                    </a>
+                </li>
+                <li class="sidebar-item dropdown">
+                    <a class="sidebar-link dropdown-toggle" href="#" id="reportsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <span>Reports</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
+                        <li><a class="dropdown-item" href="/Admin/Report/RoomReport/">Room Report</a></li>
+                        @* <li><a class="dropdown-item" href="@Url.Action("StaffReport", "Reports")">Staff Report</a></li> *@
+                        @* <li><a class="dropdown-item" href="@Url.Action("BookingReport", "Reports")">Booking Report</a></li> *@
+                        <li><a class="dropdown-item" href="/Admin/Report/MeetingReport">Meeting Report</a></li>
+                        <li><a class="dropdown-item" href="/Admin/Report/ContactReport">Contact Report</a></li>
+                        <li><a class="dropdown-item" href="/Admin/Report/StaffReport">Staff Report</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/Admin/User/Logout" class="sidebar-link">
+                        <i class="bi bi-person-x-fill"></i>
+                        <span>Log Off</span>
+                    </a>
+                </li>
+                @*<li class="sidebar-header">
+                    Pages
+                 </li> 
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#auth"
+                       aria-expanded="true" aria-controls="auth">
+                        <i class="bi bi-shield-shaded"></i>
+                        <span>Auth</span>
+                    </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-target="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Register</a>
+                        </li>
+                    </ul>
+                </li>*@
+                @* <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-popup"></i>
+                        <span>Notification</span>
+                    </a>
+                </li> *@
+                @* <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li> *@
+            </ul>
+
+             <div class="sidebar-footer">
+            <a href="#" class="sidebar-link">
+            <i class="bi bi-exit"></i>
+            @* <span>Settings</span> *@
+                    @* <i class="bi bi-skip-backward"></i> *@
+            </a>
+            </div>
+        </aside>
+        <!--Sidebar End-->
+        <div>
+            <nav>
+                <button class="toggler-btn" type="button">
+                    <i class="bi bi-list"></i>
+                </button>
+            </nav>
+        </div>
+
+    </div>
+    <div class="container col-lg-8">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>

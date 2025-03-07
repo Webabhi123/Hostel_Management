@@ -11,10 +11,14 @@ namespace Hostel_Management.Controllers
     public class HomeController : Controller
     {
         private IMeetingRepository _meetingRepository;
+        private IRoomRepository _roomRepository;
+        private IContactRepository _contactRepository;
 
-        public HomeController(IMeetingRepository meetingRepository)
+        public HomeController(IMeetingRepository meetingRepository,IRoomRepository roomRepository, IContactRepository contactRepository)
         {
             _meetingRepository = meetingRepository;
+            _roomRepository = roomRepository;
+            _contactRepository = contactRepository;
         }
         public IActionResult Index()
         {
@@ -70,11 +74,33 @@ namespace Hostel_Management.Controllers
             return View();
         }
 
-
-
-        [Route("CheckOut")]
-        public IActionResult CheckOut(string planName, long price)
+        [Route("room-available")]
+        public async Task<IActionResult> RoomAvailabilty()
         {
+            var rooms = await _roomRepository.GetAll();
+            return View(rooms);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ContactUs(Contact entity)
+        {
+            if (ModelState.IsValid) 
+            { 
+                var contacts=await _contactRepository.Add(entity);
+                return Json(new {success = true});
+            }
+            return Json(new {success=false});
+        }
+        [Route("CheckOut")]
+        public IActionResult CheckOut([FromBody] Pricing request)
+        {
+            //if (string.IsNullOrEmpty(request.planName) || request.price <= 0)
+            //{
+            //    return BadRequest(new { message = "Invalid planName or price" });
+            //}
+            if (string.IsNullOrEmpty(request.planName))
+            {
+                request.planName = "Room booking";
+            }
             var domain = "https://localhost:7199/";
 
             var options = new SessionCreateOptions
@@ -88,10 +114,10 @@ namespace Hostel_Management.Controllers
                 PriceData = new SessionLineItemPriceDataOptions
                 {
                     Currency = "INR",
-                    UnitAmount = 50000, // Convert price to smallest currency unit (e.g., paise for INR)
+                    UnitAmount = request.price*100, // Convert price to smallest currency unit (e.g., paise for INR)
                     ProductData = new SessionLineItemPriceDataProductDataOptions
                     {
-                        Name = "Hostel Booking", // Use the plan name from the form
+                        Name = request.planName, // Use the plan name from the form
                     },
                 },
                 Quantity = 1,
@@ -103,8 +129,9 @@ namespace Hostel_Management.Controllers
             var service = new SessionService();
             Session session = service.Create(options);
 
-            Response.Headers.Add("Location", session.Url);
-            return new StatusCodeResult(303); // Stripe uses 303 redirect for Checkout sessions
+            //Response.Headers.Add("Location", session.Url);
+            //return new StatusCodeResult(303); // Stripe uses 303 redirect for Checkout sessions
+            return Json(new { url = session.Url });
         }
 
     }

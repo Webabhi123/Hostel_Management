@@ -1,0 +1,97 @@
+﻿@model Hostel_Management.Models.Room;
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutSideNavbar.cshtml";
+}
+
+<h1>Edit</h1>
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="RoomId" />
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.RoomNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.RoomNumber, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.Capacity, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.Capacity, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.IsOccupied, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.IsOccupied, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.PricePerMonth, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.PricePerMonth, new { @class = "form-control" })
+        </div>
+    </div>
+    @* <div class="form-group">
+        @Html.LabelFor(u => u.Description, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.Description, new { @class = "form-control" })
+        </div>
+    </div> *@
+    <div class="form-group">
+        @Html.LabelFor(u => u.RoomType, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(u => u.RoomType, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u => u.Image, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            <div id="imagePreviewContainer" style="@(!string.IsNullOrEmpty(Model.Image) ? "display: block;" : "display: none;")">
+                @if (!string.IsNullOrEmpty(Model.Image))
+                {
+                    <img id="imagePreview" src="@Model.Image" alt="Room Image" style="max-width: 200px; max-height: 200px; display: block; margin-bottom: 10px;" />
+                    @* <p id="imageName">@Path.GetF(Model.Image)</p> *@
+                    <button type="button" class="btn btn-danger btn-sm" onclick="cancelImage()">Cancel Image</button>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" id="fileUploadContainer" style="@(!string.IsNullOrEmpty(Model.Image) ? "display: none;" : "display: block;")">
+        @* @Html.Label("Upload New Image", new { @class = "col-md-2 control-label" }) *@
+        <label class="col-md-2 control-label">Upload New Image</label>
+        <div class="col-md-4">
+            <input type="file" id="imageFile" name="imageFile" class="form-control-file" onchange="previewImage()" />
+        </div>
+    </div>
+
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a href="/Admin/Room/Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+<script>
+    function previewImage() {
+        var file = document.getElementById('imageFile').files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('imagePreview').src = e.target.result;
+                document.getElementById('imagePreviewContainer').style.display = 'block';
+                document.getElementById('imageName').innerText = file.name;
+                document.getElementById('fileUploadContainer').style.display = 'none';
+                document.getElementById('imageFile').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function cancelImage() {
+        document.getElementById('imageFile').value = ""; // Reset the file input
+        document.getElementById('imagePreviewContainer').style.display = 'none'; // Hide the image preview
+        document.getElementById('fileUploadContainer').style.display = 'block'; // Show file input
+    }
+</script>

@@ -1,4 +1,4 @@
-﻿
+﻿@model Hostel_Management.Models.Pricing;
 @{
     ViewData["Title"] = "Pricing";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,9 +23,9 @@
                 <div class="currency-selector">
                     <select class="currency_selector_select">
                     <option value="INR" selected>INR</option>
-                    <option value="USD"> USD</option>
+                    @* <option value="USD"> USD</option>
                     <option value="EUR">EUR</option>
-                    <option value="BRL">BRL</option>
+                    <option value="BRL">BRL</option> *@
                 </select>
                 </div>
             </div>
@@ -75,13 +75,7 @@
                         <p class="pricing_body_text">Per day</p>
                     </div>
                     <div class="pricing_footer">
-                        @* <form id="checkoutForm" asp-action="CheckOut" asp-controller="CheckOut" method="post">
-                            <input type="hidden" name="PlanName" id="planNameInput" value="" />
-                            <input type="hidden" name="Price" id="priceInput" value="" />
-                            <input type="hidden" name="Units" id="unitsInput" value="" /> 
-                            <button type="submit" class="pricing_footer_btn">Click To Pay</button>
-                        </form> *@
-                         <a class="pricing_footer_btn" href="/CheckOut/">Click To Pay</a> 
+                        <a class="pricing_footer_btn" id="checkoutButton" href="#">Click To Pay</a>
                         <p class="pricing_footer_text">You can only pay <b>40%</b>deposit for booking a Hostel rather than you can visit after that pay it.</p>
                     </div>
                 </div>
@@ -116,7 +110,43 @@
 </div>
 
 <script>
-    
+    $(document).ready(function () {
+        $("#checkoutButton").click(function () {
+            // Get the plan name and price dynamically
+            const planName = $(".pricing_plan_name").text().trim();
+            const planPrice = parseInt($(".pricing_body_price").text().trim(), 10); // Convert price to a number
+
+            // Validate the plan name and price
+            if (planName && planPrice) {
+                // Make the AJAX POST request
+                $.ajax({
+                    url: '/CheckOut',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        planName: planName,
+                        price: planPrice
+                    }),
+                    success: function (response) {
+                        console.log(response); // Log the full response to inspect its structure
+                        console.log(response.url); // Verify that the URL exists and is accessible
+                        if (response.url) {
+                            // Redirect to Stripe payment page
+                            window.location.href = response.url;
+                        } else {
+                            alert("Failed to initiate checkout. Please try again.");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error:", error);
+                        alert("An error occurred while processing your request. Please try again.");
+                    }
+                });
+            } else {
+                alert("Please select a valid plan.");
+            }
+        });
+    });
 
 </script>
 

@@ -6,10 +6,10 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <@* link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" /> *@
+        <link rel="stylesheet" href="~/css/site.css" /> *@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        .btn-color {
+.btn-color {
     background-color: #0e1c36;
     color: #fff;
 }
@@ -20,8 +20,6 @@
     object-fit: cover;
 }
 
-
-
 .cardbody-color {
     background-color: #ebf2fa;
 }
@@ -29,11 +27,14 @@
 a {
     text-decoration: none;
 }
-    </style>
+</style>
 </head>
 <body>
-    <div>
-        @RenderBody()
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
 </body>
 </html>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Hostel_Management.Models.Meeting>
+@{
+    ViewData["Title"] = "MeetingReport";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutSideNavbar.cshtml";
+}
+
+<h1>MeetingReport</h1>
+<div align="right">
+    <a href="/Admin/Report/ExportMeetingReport" class="btn btn-secondary">Export Report</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name of the person</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phonenumber</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Address</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.City</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

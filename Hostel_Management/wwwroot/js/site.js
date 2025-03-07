@@ -3,6 +3,31 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
+    // Sidebar toggle functionality
+    //$(".toggler-btn").on("click", function () {
+    //    $("#sidebar").toggleClass("collapsed");
+    //});
+    $(".toggler-btn").on("click", function () {
+        const sidebar = $("#sidebar");
+        const toggler = $(".toggler-btn");
+
+        // Toggle the sidebar's collapsed class
+        sidebar.toggleClass("collapsed");
+
+        // Check if the sidebar is collapsed
+        if (sidebar.hasClass("collapsed")) {
+            toggler.css({
+                position: "absolute", // Remove `absolute` positioning
+                left:"-0.5rem"     // Hide the toggle button
+            });
+        } else {
+            toggler.css({
+                position: "absolute", // Restore `absolute` positioning
+                left:"16.5rem"      // Show the toggle button
+            });
+        }
+    });
+
     $("#pricing_size_item_by_id").addClass('active');
     var planName = $("#pricing_size_item_by_id").data('plan');
     var plansize = $("#pricing_size_item_by_id").data('unit');
@@ -39,6 +64,7 @@ $(document).ready(function () {
     //    });
     //});
 });
+
 
 
 //$(document).ready(function () {
